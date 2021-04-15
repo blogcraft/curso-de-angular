@@ -1,4 +1,10 @@
-<h3>Detalles de {{usuario.nombre | uppercase}}</h3>
+<h2>Mis Usuarios</h2>
+<ul class="usuarios">
+    <li *ngFor="let usuario of usuarios">
+        <span class="badge">{{usuario.id}}</span> {{usuario.nombre}}
+    </li>
+</ul>
+<h2>Detalles de {{usuario.nombre | uppercase}}</h2>
 <div><span>id: </span>{{usuario.id}}</div>
 <div>
     <label for="nombre">Nombre usuario: </label>
