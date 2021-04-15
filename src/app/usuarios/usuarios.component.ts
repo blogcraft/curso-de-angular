@@ -9,14 +9,15 @@ import { USUARIOS } from '../usuarios-ficticios';
 })
 export class UsuariosComponent implements OnInit {
   usuarios = USUARIOS;
-  usuario: Usuario = {
-    id: 1,
-    nombre: "Juan"
-  };
+  usuarioSeleccionado?: Usuario;
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onSelect(usuario: Usuario): void {
+    this.usuarioSeleccionado = usuario;
   }
 
 }

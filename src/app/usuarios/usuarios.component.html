@@ -1,6 +1,6 @@
 <h2>Mis Usuarios</h2>
 <ul class="usuarios">
-    <li *ngFor="let usuario of usuarios">
+    <li *ngFor="let usuario of usuarios" (click)="onSelect(usuario)">
         <span class="badge">{{usuario.id}}</span> {{usuario.nombre}}
     </li>
 </ul>
