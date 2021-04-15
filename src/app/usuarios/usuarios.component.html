@@ -4,9 +4,9 @@
         <span class="badge">{{usuario.id}}</span> {{usuario.nombre}}
     </li>
 </ul>
-<h2>Detalles de {{usuario.nombre | uppercase}}</h2>
-<div><span>id: </span>{{usuario.id}}</div>
+<h2>Detalles de {{usuarioSeleccionado.nombre | uppercase}}</h2>
+<div><span>id: </span>{{usuarioSeleccionado.id}}</div>
 <div>
     <label for="nombre">Nombre usuario: </label>
-    <input id="nombre" [(ngModel)]="usuario.nombre" placeholder="nombre">
+    <input id="nombre" [(ngModel)]="usuarioSeleccionado.nombre" placeholder="nombre">
 </div>
