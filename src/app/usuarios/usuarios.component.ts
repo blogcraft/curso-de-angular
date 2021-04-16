@@ -23,6 +23,15 @@ export class UsuariosComponent implements OnInit {
   obtenerUsuarios(): void {
     this.usuarioService.obtenerUsuarios()
       .subscribe(usuarios => this.usuarios = usuarios);
+  } 1
+
+  agregar(nombre: string): void {
+    nombre = nombre.trim();
+    if (!nombre) { return; }
+    this.usuarioService.agregarUsuario({ nombre } as Usuario)
+      .subscribe(usuario => {
+        this.usuarios.push(usuario);
+      })
   }
 
 }

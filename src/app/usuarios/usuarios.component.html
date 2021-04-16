@@ -6,3 +6,13 @@
         </a>
     </li>
 </ul>
+<div>
+    <label for="nuevo-usuario">Nombre usuario: </label>
+    <input id="nuevo-usuario" #nombreUsuario />
+
+    <button
+        class="agregar-buton"
+        (click)="agregar(nombreUsuario.value); nombreUsuario.value">
+        Agregar Usuario
+    </button>
+</div>

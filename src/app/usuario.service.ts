@@ -14,7 +14,7 @@ import { USUARIOS } from './usuarios-ficticios';
 export class UsuarioService {
   private usuariosUrl = 'api/usuarios';
   httpOptions = {
-    headers: new HttpHeaders({'Content-Type': 'application/json'})
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
   constructor(
@@ -49,6 +49,15 @@ export class UsuarioService {
       .pipe(
         tap(_ => this.log(`Usuario Actualizado id=${usuario.id}`)),
         catchError(this.manejarError<any>('actualizarUsuario'))
+      );
+  }
+
+  /** POST: agrega un nuevo usuario al servidor */
+  agregarUsuario(usuario: Usuario): Observable<Usuario> {
+    return this.http.post<Usuario>(this.usuariosUrl, usuario, this.httpOptions)
+      .pipe(
+        tap((nuevoUsuario) => console.log(`Usuario Agregado con id=${nuevoUsuario.id}`)),
+        catchError(this.manejarError<Usuario>('agregarUsuario'))
       );
   }
 
