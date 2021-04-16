@@ -17,5 +17,11 @@ export class UsuarioService {
     const usuarios = of(USUARIOS);
     this.mensajeService.agregar('UsuarioService: Obtuvo usuario');
     return usuarios;
-   }
+  }
+
+  obtenerUsuario(id: number): Observable<Usuario> {
+    const usuario = USUARIOS.find(u => u.id == id) as Usuario;
+    this.mensajeService.agregar(`UsuarioService: usuario buscado id=${id}`);
+    return of(usuario);
+  }
 }
