@@ -1,6 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
 
-import {Usuario} from '../usuario';
+import { UsuarioService } from '../usuario.service';
+
+import { Usuario } from '../usuario';
 
 @Component({
   selector: 'app-usuario-detalle',
@@ -10,7 +14,11 @@ import {Usuario} from '../usuario';
 export class UsuarioDetalleComponent implements OnInit {
   @Input() usuario?: Usuario;
 
-  constructor() { }
+  constructor(
+    private route: ActivatedRoute,
+    private usuarioService: UsuarioService,
+    private location: Location
+  ) { }
 
   ngOnInit(): void {
   }
