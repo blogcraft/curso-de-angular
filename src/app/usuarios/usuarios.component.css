@@ -6,31 +6,30 @@
     width: 15em;
 }
 .usuarios li {
-    cursor: pointer;
     position: relative;
-    left: 0;
+    cursor: pointer;
+}
+.usuarios li:hover {
+    left: 0.1em;
+}
+.usuarios a {
+    color: #333;
+    text-decoration: none;
     background-color: #eee;
     margin: 0.5em;
     padding: 0.3em 0;
     height: 1.6em;
     border-radius: 4px;
+    display: block;
+    width: 100%;
 }
-.usuarios li:hover {
+.usuarios a:hover {
     color: #2c3a41;
     background-color: #e6e6e6;
-    left: 0.1em;
 }
-.usuarios li.selected {
-    background-color: black;
-    color: white;
-}
-.usuarios li.selected:hover {
-    background-color: #505050;
-    color: white;
-}
-.usuarios li.selected:active {
-    background-color: black;
-    color: white;
+.usuarios a:active {
+    background-color: #525252;
+    color: #fafafa;
 }
 .usuarios .badge {
     display: inline-block;
@@ -43,9 +42,8 @@
     left: -1px;
     top: -4px;
     height: 1.8em;
+    min-width: 16px;
+    text-align: right;
     margin-right: 0.8em;
     border-radius: 4px 0 0 4px;
-}
-input {
-    padding: 0.5rem;
 }
