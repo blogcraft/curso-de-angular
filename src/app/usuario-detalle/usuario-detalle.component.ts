@@ -30,4 +30,8 @@ export class UsuarioDetalleComponent implements OnInit {
       .subscribe(usuario => this.usuario = usuario);
   }
 
+  irAtras() {
+    this.location.back();
+  }
+
 }
