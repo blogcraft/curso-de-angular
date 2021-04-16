@@ -15,6 +15,7 @@ export class UsuarioService {
 
   obtenerUsuarios(): Observable<Usuario[]> {
     const usuarios = of(USUARIOS);
+    this.mensajeService.agregar('UsuarioService: Obtuvo usuario');
     return usuarios;
-  }
+   }
 }
