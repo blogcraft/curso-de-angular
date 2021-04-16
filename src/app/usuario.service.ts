@@ -25,14 +25,22 @@ export class UsuarioService {
 
   obtenerUsuarios(): Observable<Usuario[]> {
     return this.http.get<Usuario[]>(this.usuariosUrl)
-    .pipe(
-      catchError(this.manejarError<Usuario[]>('obtenerUsuarios', []))
-    );
+      .pipe(
+        catchError(this.manejarError<Usuario[]>('obtenerUsuarios', []))
+      );
   }
 
   obtenerUsuario(id: number): Observable<Usuario> {
     const usuario = USUARIOS.find(u => u.id == id) as Usuario;
     this.mensajeService.agregar(`UsuarioService: usuario buscado id=${id}`);
     return of(usuario);
+  }
+
+  private manejarError<T>(operacion = 'operacion', resultado?: T) {
+    return (error: any): Observable<T> => {
+      console.log(error);
+      this.log(`${operacion} fallida: ${error.message}`);
+      return of(resultado as T);
+    }
   }
 }
