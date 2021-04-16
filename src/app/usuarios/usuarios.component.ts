@@ -20,4 +20,8 @@ export class UsuariosComponent implements OnInit {
     this.usuarioSeleccionado = usuario;
   }
 
+  obtenerUsuarios(): void {
+    this.usuarios = this.usuarioService.obtenerUsuarios();
+  }
+
 }
