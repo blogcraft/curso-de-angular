@@ -26,6 +26,7 @@ export class UsuarioService {
     this.mensajeService.agregar(`UsuarioService: ${mensaje}`);
   }
 
+  /** GET: Obtener todos los Usuarios */
   obtenerUsuarios(): Observable<Usuario[]> {
     return this.http.get<Usuario[]>(this.usuariosUrl)
       .pipe(
@@ -34,12 +35,27 @@ export class UsuarioService {
       );
   }
 
+  /** GET: Obtener Usuario por id */
   obtenerUsuario(id: number): Observable<Usuario> {
     const url = `${this.usuariosUrl}/${id}`;
     return this.http.get<Usuario>(url)
       .pipe(
         tap(_ => this.log(`Usuario Buscado id=${id}`)),
         catchError(this.manejarError<Usuario>(`obtenerUsuario id=${id}`))
+      );
+  }
+
+  /** GET: Buscar Usuarios cuyo nombre coincida con el criterio */
+  buscarUsuarios(criterio: string): Observable<Usuario[]> {
+    if (!criterio.trim()) {
+      return of([]);
+    }
+    return this.http.get<Usuario[]>(`${this.usuariosUrl}/?nombre=${criterio}`)
+      .pipe(
+        tap(x => x.length ?
+          this.log(`usuarios encontrados que coinciden con: "${criterio}"`) :
+          this.log(`no se encontraron usuarios que coincidan con: "${criterio}"`)),
+        catchError(this.manejarError<Usuario[]>('buscarUsuarios', []))
       );
   }
 
