@@ -34,4 +34,9 @@ export class UsuariosComponent implements OnInit {
       })
   }
 
+  borrar(usuario: Usuario): void {
+    this.usuarios = this.usuarios.filter(h => h !== usuario);
+    this.usuarioService.borrarUsuario(usuario).subscribe()
+  }
+
 }

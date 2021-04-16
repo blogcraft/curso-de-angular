@@ -1,11 +1,4 @@
 <h2>Mis Usuarios</h2>
-<ul class="usuarios">
-    <li *ngFor="let usuario of usuarios">
-        <a routerLink="/usuarios/{{usuario.id}}">
-            <span class="badge">{{usuario.id}}</span> {{usuario.nombre}}
-        </a>
-    </li>
-</ul>
 <div>
     <label for="nuevo-usuario">Nombre usuario: </label>
     <input id="nuevo-usuario" #nombreUsuario />
@@ -16,3 +9,12 @@
         Agregar Usuario
     </button>
 </div>
+<ul class="usuarios">
+    <li *ngFor="let usuario of usuarios">
+        <a routerLink="/usuarios/{{usuario.id}}">
+            <span class="badge">{{usuario.id}}</span> {{usuario.nombre}}
+        </a>
+        <button class="borrar" title="Borrar Usuario"
+            (click)="borrar(usuario)">x</button>
+    </li>
+</ul>

@@ -61,6 +61,18 @@ export class UsuarioService {
       );
   }
 
+  /** DELETE: borrar un usuario del servidor */
+  borrarUsuario(usuario: Usuario | number): Observable<Usuario> {
+    const id = typeof usuario === 'number' ? usuario : usuario.id;
+    const url = `${this.usuariosUrl}/${id}`;
+
+    return this.http.delete<Usuario>(url, this.httpOptions)
+      .pipe(
+        tap(_ => this.log(`Usuario Borrado con id =${id}`)),
+        catchError(this.manejarError<Usuario>('borrarUsuario'))
+      );
+  }
+
   private manejarError<T>(operacion = 'operacion', resultado?: T) {
     return (error: any): Observable<T> => {
       console.log(error);
