@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Observable , of } from 'rxjs';
+import { Observable, of } from 'rxjs';
+
+import { MensajeService } from './mensaje.service';
 
 import { Usuario } from './usuario';
 import { USUARIOS } from './usuarios-ficticios';
@@ -9,7 +11,7 @@ import { USUARIOS } from './usuarios-ficticios';
 })
 export class UsuarioService {
 
-  constructor() { }
+  constructor(private mensajeService: MensajeService) { }
 
   obtenerUsuarios(): Observable<Usuario[]> {
     const usuarios = of(USUARIOS);
