@@ -23,9 +23,7 @@ export class UsuarioService {
   }
 
   obtenerUsuarios(): Observable<Usuario[]> {
-    const usuarios = of(USUARIOS);
-    this.mensajeService.agregar('UsuarioService: Obtuvo usuario');
-    return usuarios;
+    return this.http.get<Usuario[]>(this.usuariosUrl);
   }
 
   obtenerUsuario(id: number): Observable<Usuario> {
