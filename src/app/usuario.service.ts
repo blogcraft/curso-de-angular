@@ -26,6 +26,7 @@ export class UsuarioService {
   obtenerUsuarios(): Observable<Usuario[]> {
     return this.http.get<Usuario[]>(this.usuariosUrl)
       .pipe(
+        tap(_ => this.log('Obtuvo Usuarios')),
         catchError(this.manejarError<Usuario[]>('obtenerUsuarios', []))
       );
   }
