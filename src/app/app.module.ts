@@ -7,13 +7,15 @@ import { UsuariosComponent } from './usuarios/usuarios.component';
 import { UsuarioDetalleComponent } from './usuario-detalle/usuario-detalle.component';
 import { MensajesComponent } from './mensajes/mensajes.component';
 import { AppRoutingModule } from './app-routing.module';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UsuariosComponent,
     UsuarioDetalleComponent,
-    MensajesComponent
+    MensajesComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
