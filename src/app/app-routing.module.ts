@@ -5,6 +5,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
 
 const rutas: Routes = [
+  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   { path: 'usuarios', component: UsuariosComponent },
   { path: 'dashboard', component: DashboardComponent }
 ]
