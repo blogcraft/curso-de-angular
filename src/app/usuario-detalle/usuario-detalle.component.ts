@@ -33,5 +33,9 @@ export class UsuarioDetalleComponent implements OnInit {
   irAtras() {
     this.location.back();
   }
-
+  
+  guardar(): void {
+    this.usuarioService.actualizarUsuario(this.usuario)
+    .subscribe(() => this.irAtras());
+   }
 }

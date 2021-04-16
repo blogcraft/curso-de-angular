@@ -13,6 +13,9 @@ import { USUARIOS } from './usuarios-ficticios';
 })
 export class UsuarioService {
   private usuariosUrl = 'api/usuarios';
+  httpOptions = {
+    headers: new HttpHeaders({'Content-Type': 'application/json'})
+  };
 
   constructor(
     private http: HttpClient,
@@ -37,6 +40,15 @@ export class UsuarioService {
       .pipe(
         tap(_ => this.log(`Usuario Buscado id=${id}`)),
         catchError(this.manejarError<Usuario>(`obtenerUsuario id=${id}`))
+      );
+  }
+
+  /** PUT: Actualiza el usuario en el servidor */
+  actualizarUsuario(usuario: Usuario): Observable<any> {
+    return this.http.put(this.usuariosUrl, usuario, this.httpOptions)
+      .pipe(
+        tap(_ => this.log(`Usuario Actualizado id=${usuario.id}`)),
+        catchError(this.manejarError<any>('actualizarUsuario'))
       );
   }
 
