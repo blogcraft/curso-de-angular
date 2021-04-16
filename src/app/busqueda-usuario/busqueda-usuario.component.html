@@ -1,0 +1,12 @@
+<div id="componente-busqueda">
+    <label for="cuadro-busqueda">Buscar Usuario</label>
+    <input #cuadroBusqueda id="cuadro-busqueda" (input)="buscar(cuadroBusqueda. value)" />
+
+    <ul class="resultado-busqueda">
+        <li *ngFor="let usuario of usuarios$ | async">
+            <a routerLink="/usuarios/{{usuario.id}}">
+                {{usuario.nombre}}
+            </a>
+        </li>
+    </ul>
+</div>

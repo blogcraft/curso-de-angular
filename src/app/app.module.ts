@@ -11,6 +11,7 @@ import { UsuarioDetalleComponent } from './usuario-detalle/usuario-detalle.compo
 import { MensajesComponent } from './mensajes/mensajes.component';
 import { AppRoutingModule } from './app-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { BusquedaUsuarioComponent } from './busqueda-usuario/busqueda-usuario.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     UsuariosComponent,
     UsuarioDetalleComponent,
     MensajesComponent,
-    DashboardComponent
+    DashboardComponent,
+    BusquedaUsuarioComponent
   ],
   imports: [
     BrowserModule,
