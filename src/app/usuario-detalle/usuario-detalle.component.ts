@@ -21,6 +21,13 @@ export class UsuarioDetalleComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.obtenerUsuario();
+  }
+
+  obtenerUsuario() {
+    const id = +this.route.snapshot.paramMap.get('id');
+    this.usuarioService.obtenerUsuario(id)
+      .subscribe(usuario => this.usuario = usuario);
   }
 
 }
