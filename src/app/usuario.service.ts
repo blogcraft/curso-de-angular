@@ -32,9 +32,12 @@ export class UsuarioService {
   }
 
   obtenerUsuario(id: number): Observable<Usuario> {
-    const usuario = USUARIOS.find(u => u.id == id) as Usuario;
-    this.mensajeService.agregar(`UsuarioService: usuario buscado id=${id}`);
-    return of(usuario);
+    const url = `${this.usuariosUrl}/${id}`;
+    return this.http.get<Usuario>(url)
+      .pipe(
+        tap(_ => this.log(`Usuario Buscado id=${id}`)),
+        catchError(this.manejarError<Usuario>(`obtenerUsuario id=${id}`))
+      );
   }
 
   private manejarError<T>(operacion = 'operacion', resultado?: T) {
