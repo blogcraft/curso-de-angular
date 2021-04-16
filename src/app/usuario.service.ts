@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
+import { catchError, map, tap } from 'rxjs/operators';
 
 import { MensajeService } from './mensaje.service';
 
@@ -23,7 +24,10 @@ export class UsuarioService {
   }
 
   obtenerUsuarios(): Observable<Usuario[]> {
-    return this.http.get<Usuario[]>(this.usuariosUrl);
+    return this.http.get<Usuario[]>(this.usuariosUrl)
+    .pipe(
+      catchError(this.manejarError<Usuario[]>('obtenerUsuarios', []))
+    );
   }
 
   obtenerUsuario(id: number): Observable<Usuario> {
